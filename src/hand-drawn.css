@@ -1,0 +1,106 @@
+:root {
+  --wobbly: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --wobbly-md: 225px 15px 15px 15px / 15px 15px 15px 225px;
+}
+
+body {
+  font-family: "Patrick Hand", cursive !important;
+  background-color: #fdfbf7 !important;
+  color: #2d2d2d !important;
+  background-image: radial-gradient(#e5e0d8 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Kalam", cursive !important;
+  font-weight: 700 !important;
+}
+
+.hand-drawn-button {
+  border-radius: var(--wobbly) !important;
+  border: 3px solid #2d2d2d !important;
+  box-shadow: 4px 4px 0px 0px #2d2d2d !important;
+  transition: all 0.1s ease !important;
+}
+
+.hand-drawn-button:hover {
+  background-color: #ff4d4d !important;
+  color: white !important;
+  box-shadow: 2px 2px 0px 0px #2d2d2d !important;
+  transform: translate(2px, 2px) !important;
+}
+
+.hand-drawn-button:active {
+  box-shadow: none !important;
+  transform: translate(4px, 4px) !important;
+}
+
+.hand-drawn-card {
+  border-radius: var(--wobbly-md) !important;
+  border: 2px solid #2d2d2d !important;
+  box-shadow: 3px 3px 0px 0px rgba(45, 45, 45, 0.1) !important;
+}
+
+.hand-drawn-input {
+  border-radius: var(--wobbly) !important;
+  border: 2px solid #2d2d2d !important;
+  font-family: "Patrick Hand", cursive !important;
+}
+
+.hand-drawn-input:focus {
+  border-color: #2d5da1 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(45, 93, 161, 0.2) !important;
+}
+
+.tape {
+  z-index: 10 !important;
+  background-color: rgba(200, 200, 200, 0.3) !important;
+  border-radius: 2px !important;
+  width: 100px !important;
+  height: 30px !important;
+  position: absolute !important;
+  top: -10px !important;
+  left: 50% !important;
+  transform: translate(-50%) rotate(-5deg) !important;
+}
+
+.tack {
+  z-index: 10 !important;
+  background-color: #ff4d4d !important;
+  border-radius: 50% !important;
+  width: 16px !important;
+  height: 16px !important;
+  position: absolute !important;
+  top: -8px !important;
+  left: 50% !important;
+  transform: translate(-50%) !important;
+}
+
+.jiggle:hover {
+  animation: jiggle 0.5s ease-in-out !important;
+}
+
+@keyframes jiggle {
+  0%,
+  to {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: 16px 16px !important;
+  }
+}
