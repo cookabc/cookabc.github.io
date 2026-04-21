@@ -1,52 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
-const PROJECTS = [
-  {
-    id: 1,
-    title: "Joy Adventure",
-    description:
-      "An imaginative platform adventure game where players explore a colorful world, solve puzzles, collect items, and battle enemies. Featuring beautiful 2D graphics and smooth animations.",
-    image: "/images/Joy Adventure.jpeg",
-    technologies: ["Unity", "C#", "2D Art", "Pixel Art"],
-    releaseDate: "2024-06-15",
-    link: "/projects/joy-adventure",
-    rotation: -0.5,
-  },
-  {
-    id: 2,
-    title: "Pixel Dungeon",
-    description:
-      "A retro-style dungeon crawler where players explore randomly generated dungeons, battle monsters, and collect equipment and items. Combining classic pixel art with modern game design.",
-    image: "/images/Pixel Dungeon.jpeg",
-    technologies: ["Unity", "C#", "Pixel Art", "Procedural Generation"],
-    releaseDate: "2024-09-20",
-    link: "/projects/pixel-dungeon",
-    rotation: 0.7,
-  },
-  {
-    id: 3,
-    title: "Space Exploration",
-    description:
-      "A sci-fi space exploration game where players can freely explore the universe, discover new planets and civilizations, trade, and battle. With vast cosmic maps and deep character progression.",
-    image: "/images/Space Exploration.jpeg",
-    technologies: ["Unreal Engine", "C++", "3D Modeling", "Space Physics"],
-    releaseDate: "2025-03-10",
-    link: "/projects/space-exploration",
-    rotation: -0.3,
-  },
-  {
-    id: 4,
-    title: "Magic Farm",
-    description:
-      "A farming game blending simulation and RPG elements, where players manage their farm in a magical world, grow enchanted crops, raise mystical animals, and complete various quests.",
-    image: "/images/Magic Farm.jpeg",
-    technologies: ["Unity", "C#", "2D Art", "Simulation"],
-    releaseDate: "2025-06-05",
-    link: "/projects/magic-farm",
-    rotation: 0.4,
-  },
-] as const;
+import { PROJECTS } from "../data/projects";
 
 const Projects = () => {
   return (
@@ -112,7 +66,7 @@ const Projects = () => {
                     </div>
                   </div>
                   <Link
-                    to={project.link}
+                    to={`/projects/${project.slug}`}
                     className="hand-drawn-button inline-block bg-white px-6 py-2 font-patrick text-base no-underline text-foreground"
                   >
                     View Details

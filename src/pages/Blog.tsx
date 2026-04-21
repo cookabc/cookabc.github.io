@@ -1,44 +1,7 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { formatDate } from "../lib/utils";
-
-const BLOG_POSTS = [
-  {
-    id: 1,
-    title: "Challenges and Opportunities in Indie Game Development",
-    excerpt:
-      "As an indie game developer, we face many challenges but also have many opportunities. This article shares our experiences and insights.",
-    date: "2026-04-10",
-    category: "Dev Thoughts",
-    image: "/images/Challenges and Opportunities in Indie Game Development.jpeg",
-  },
-  {
-    id: 2,
-    title: "How to Design a Successful Indie Game",
-    excerpt:
-      "Game design is key to indie game success. This article explores the core elements and best practices of game design.",
-    date: "2026-03-25",
-    category: "Game Design",
-    image: "/images/How to Design a Successful Indie Game.jpeg",
-  },
-  {
-    id: 3,
-    title: "Unity vs Unreal Engine: How to Choose the Right Game Engine",
-    excerpt:
-      "Unity and Unreal Engine are the most popular game engines today. This article compares their pros and cons to help you make a choice.",
-    date: "2026-03-10",
-    category: "Tech Tutorial",
-    image: "/images/Unity vs Unreal Engine.jpeg",
-  },
-  {
-    id: 4,
-    title: "Marketing Strategies for Indie Games",
-    excerpt:
-      "Even if your game is great, without good marketing strategies it's hard to succeed. This article shares marketing tips for indie games.",
-    date: "2026-02-20",
-    category: "Marketing",
-    image: "/images/Marketing Strategies for Indie Games.jpeg",
-  },
-] as const;
+import { BLOG_POSTS } from "../data/blog";
 
 const Blog = () => {
   return (
@@ -84,12 +47,12 @@ const Blog = () => {
                   <p className="mb-4 font-patrick leading-relaxed text-foreground">
                     {post.excerpt}
                   </p>
-                  <a
-                    href={`/blog/${post.id}`}
+                  <Link
+                    to={`/blog/${post.id}`}
                     className="font-patrick font-medium underline decoration-wavy decoration-accent decoration-2 text-accent"
                   >
                     Read More →
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}
