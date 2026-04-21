@@ -1,161 +1,101 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaTwitter, FaDiscord, FaEnvelope } from "react-icons/fa";
 
+const CONTACT_INFO = [
+  {
+    icon: <FaEnvelope size={24} />,
+    title: "Email",
+    value: "hello@veryfuncompany.com",
+    link: "mailto:hello@veryfuncompany.com",
+  },
+  {
+    icon: <FaGithub size={24} />,
+    title: "GitHub",
+    value: "github.com/veryfuncompany",
+    link: "https://github.com/veryfuncompany",
+  },
+  {
+    icon: <FaTwitter size={24} />,
+    title: "Twitter",
+    value: "@veryfuncompany",
+    link: "https://twitter.com/veryfuncompany",
+  },
+  {
+    icon: <FaDiscord size={24} />,
+    title: "Discord",
+    value: "veryfuncompany#1234",
+    link: "https://discord.gg/veryfuncompany",
+  },
+] as const;
+
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <div>
-      <section style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
-        <div
-          style={{
-            maxWidth: "80rem",
-            margin: "0 auto",
-            paddingLeft: "1rem",
-            paddingRight: "1rem",
-            textAlign: "center",
-          }}
-        >
+      <section className="py-20">
+        <div className="mx-auto max-w-[80rem] px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1
-              style={{
-                fontSize: "3rem",
-                fontWeight: "bold",
-                fontFamily: "Kalam, cursive",
-                color: "#2d2d2d",
-                marginBottom: "1.5rem",
-              }}
-            >
-              Get in Touch
-            </h1>
-            <p
-              style={{
-                fontSize: "1.25rem",
-                color: "#2d2d2d",
-                maxWidth: "48rem",
-                margin: "0 auto",
-                fontFamily: "Patrick Hand, cursive",
-              }}
-            >
+            <h1 className="mb-6 font-kalam text-4xl font-bold text-foreground">Get in Touch</h1>
+            <p className="mx-auto max-w-3xl font-patrick text-xl text-foreground">
               If you have any questions or collaboration inquiries, feel free to reach out anytime
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
-        <div
-          style={{ maxWidth: "80rem", margin: "0 auto", paddingLeft: "1rem", paddingRight: "1rem" }}
-        >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "3rem",
-            }}
-          >
+      <section className="py-16">
+        <div className="mx-auto max-w-[80rem] px-4">
+          <div className="grid gap-12 md:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              style={{
-                backgroundColor: "white",
-                padding: "2rem",
-                position: "relative",
-                transform: "rotate(-1deg)",
-                borderRadius: "var(--wobbly-md)",
-                border: "2px solid #2d2d2d",
-              }}
+              className="-rotate-1 rounded-wobbly-md border-2 border-border bg-white p-8 relative"
             >
-              <div className="tape"></div>
-              <h2
-                style={{
-                  fontSize: "1.875rem",
-                  fontWeight: "bold",
-                  fontFamily: "Kalam, cursive",
-                  color: "#2d2d2d",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                Contact Info
-              </h2>
-              <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-                {[
-                  {
-                    icon: <FaEnvelope size={24} />,
-                    title: "Email",
-                    value: "hello@veryfuncompany.com",
-                    link: "mailto:hello@veryfuncompany.com",
-                  },
-                  {
-                    icon: <FaGithub size={24} />,
-                    title: "GitHub",
-                    value: "github.com/veryfuncompany",
-                    link: "https://github.com/veryfuncompany",
-                  },
-                  {
-                    icon: <FaTwitter size={24} />,
-                    title: "Twitter",
-                    value: "@veryfuncompany",
-                    link: "https://twitter.com/veryfuncompany",
-                  },
-                  {
-                    icon: <FaDiscord size={24} />,
-                    title: "Discord",
-                    value: "veryfuncompany#1234",
-                    link: "https://discord.gg/veryfuncompany",
-                  },
-                ].map((item, index) => (
+              <div className="tape" />
+              <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Contact Info</h2>
+              <div className="flex flex-col gap-6">
+                {CONTACT_INFO.map((item, index) => (
                   <motion.div
-                    key={index}
+                    key={item.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    style={{ display: "flex", alignItems: "center", gap: "1rem" }}
+                    className="flex items-center gap-4"
                   >
                     <div
-                      style={{
-                        width: "3rem",
-                        height: "3rem",
-                        backgroundColor: "#e5e0d8",
-                        borderRadius: "9999px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#2d2d2d",
-                      }}
-                      className="jiggle"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-muted text-foreground jiggle"
+                      aria-hidden="true"
                     >
                       {item.icon}
                     </div>
                     <div>
-                      <h3
-                        style={{
-                          fontSize: "1.125rem",
-                          fontWeight: "bold",
-                          fontFamily: "Kalam, cursive",
-                          color: "#2d2d2d",
-                          marginBottom: "0.25rem",
-                        }}
-                      >
+                      <h3 className="mb-0.5 font-kalam text-lg font-bold text-foreground">
                         {item.title}
                       </h3>
                       <a
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{
-                          fontFamily: "Patrick Hand, cursive",
-                          color: "#2d2d2d",
-                          textDecoration: "underline",
-                          textDecorationStyle: "wavy",
-                          textDecorationColor: "#ff4d4d",
-                          textDecorationThickness: "2px",
-                        }}
+                        className="font-patrick underline decoration-wavy decoration-accent decoration-2 text-foreground"
                       >
                         {item.value}
                       </a>
@@ -164,147 +104,96 @@ const Contact = () => {
                 ))}
               </div>
             </motion.div>
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              style={{
-                backgroundColor: "white",
-                padding: "2rem",
-                position: "relative",
-                transform: "rotate(1deg)",
-                borderRadius: "var(--wobbly-md)",
-                border: "2px solid #2d2d2d",
-              }}
+              className="rotate-1 rounded-wobbly-md border-2 border-border bg-white p-8 relative"
             >
-              <div className="tack"></div>
-              <h2
-                style={{
-                  fontSize: "1.875rem",
-                  fontWeight: "bold",
-                  fontFamily: "Kalam, cursive",
-                  color: "#2d2d2d",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                Send a Message
-              </h2>
-              <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                <div>
-                  <label
-                    htmlFor="name"
-                    style={{
-                      display: "block",
-                      fontSize: "0.875rem",
-                      fontWeight: "500",
-                      fontFamily: "Patrick Hand, cursive",
-                      color: "#2d2d2d",
-                      marginBottom: "0.25rem",
-                    }}
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="hand-drawn-input"
-                    style={{
-                      width: "100%",
-                      paddingLeft: "1rem",
-                      paddingRight: "1rem",
-                      paddingTop: "0.5rem",
-                      paddingBottom: "0.5rem",
-                      backgroundColor: "white",
-                      color: "#2d2d2d",
-                      fontFamily: "Patrick Hand, cursive",
-                    }}
-                    placeholder="Enter your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    style={{
-                      display: "block",
-                      fontSize: "0.875rem",
-                      fontWeight: "500",
-                      fontFamily: "Patrick Hand, cursive",
-                      color: "#2d2d2d",
-                      marginBottom: "0.25rem",
-                    }}
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="hand-drawn-input"
-                    style={{
-                      width: "100%",
-                      paddingLeft: "1rem",
-                      paddingRight: "1rem",
-                      paddingTop: "0.5rem",
-                      paddingBottom: "0.5rem",
-                      backgroundColor: "white",
-                      color: "#2d2d2d",
-                      fontFamily: "Patrick Hand, cursive",
-                    }}
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    style={{
-                      display: "block",
-                      fontSize: "0.875rem",
-                      fontWeight: "500",
-                      fontFamily: "Patrick Hand, cursive",
-                      color: "#2d2d2d",
-                      marginBottom: "0.25rem",
-                    }}
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="hand-drawn-input"
-                    style={{
-                      width: "100%",
-                      paddingLeft: "1rem",
-                      paddingRight: "1rem",
-                      paddingTop: "0.5rem",
-                      paddingBottom: "0.5rem",
-                      backgroundColor: "white",
-                      color: "#2d2d2d",
-                      fontFamily: "Patrick Hand, cursive",
-                    }}
-                    placeholder="Enter your message"
-                  ></textarea>
-                </div>
-                <motion.button
-                  type="submit"
-                  className="hand-drawn-button"
-                  style={{
-                    width: "100%",
-                    paddingLeft: "1.5rem",
-                    paddingRight: "1.5rem",
-                    paddingTop: "0.75rem",
-                    paddingBottom: "0.75rem",
-                    backgroundColor: "white",
-                    color: "#2d2d2d",
-                    fontFamily: "Patrick Hand, cursive",
-                    fontSize: "1rem",
-                    fontWeight: "500",
-                  }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+              <div className="tack" />
+              <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Send a Message</h2>
+              {submitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="py-12 text-center"
                 >
-                  Send Message
-                </motion.button>
-              </form>
+                  <p className="text-4xl mb-4">🎉</p>
+                  <p className="font-kalam text-xl font-bold text-foreground">Message Sent!</p>
+                  <p className="mt-2 font-patrick text-foreground">
+                    We&apos;ll get back to you soon.
+                  </p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="mb-1 block font-patrick text-sm font-medium text-foreground"
+                    >
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      autoComplete="name"
+                      className="hand-drawn-input w-full px-4 py-2 font-patrick text-foreground placeholder:text-muted"
+                      placeholder="Enter your name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="mb-1 block font-patrick text-sm font-medium text-foreground"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      autoComplete="email"
+                      className="hand-drawn-input w-full px-4 py-2 font-patrick text-foreground placeholder:text-muted"
+                      placeholder="Enter your email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="mb-1 block font-patrick text-sm font-medium text-foreground"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={5}
+                      required
+                      className="hand-drawn-input w-full px-4 py-2 font-patrick text-foreground resize-y placeholder:text-muted"
+                      placeholder="Enter your message"
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    />
+                  </div>
+                  <motion.button
+                    type="submit"
+                    className="hand-drawn-button w-full px-6 py-3 font-patrick text-base font-medium text-foreground"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.96 }}
+                  >
+                    Send Message
+                  </motion.button>
+                </form>
+              )}
             </motion.div>
           </div>
         </div>

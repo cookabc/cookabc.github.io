@@ -1,7 +1,33 @@
+import { useMemo } from "react";
 import HeroSection from "../components/common/HeroSection";
 import { motion } from "framer-motion";
 
+const FEATURE_CARDS = [
+  {
+    title: "Game Development",
+    description: "Focused on indie game development using modern game engines and tech stacks",
+    icon: "🎮",
+    rotation: -0.8,
+  },
+  {
+    title: "Creative Design",
+    description:
+      "Emphasizing creative game design and user experience to create unique gaming experiences",
+    icon: "✨",
+    rotation: 0.6,
+  },
+  {
+    title: "Technical Innovation",
+    description:
+      "Continuously exploring new technologies and methods to improve game quality and performance",
+    icon: "🚀",
+    rotation: -0.4,
+  },
+] as const;
+
 const Home = () => {
+  const rotations = useMemo(() => FEATURE_CARDS.map((c) => c.rotation), []);
+
   return (
     <div>
       <HeroSection
@@ -11,111 +37,38 @@ const Home = () => {
         buttonLink="/projects"
       />
 
-      <section style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
-        <div
-          style={{
-            maxWidth: "80rem",
-            margin: "0 auto",
-            paddingLeft: "1.5rem",
-            paddingRight: "1.5rem",
-          }}
-        >
+      <section className="py-20">
+        <div className="mx-auto max-w-[80rem] px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            style={{ textAlign: "center", marginBottom: "5rem" }}
+            className="mb-20 text-center"
           >
-            <h2
-              style={{
-                fontSize: "3rem",
-                fontWeight: "bold",
-                fontFamily: "Kalam, cursive",
-                color: "#2d2d2d",
-                marginBottom: "2rem",
-              }}
-            >
-              About Us
-            </h2>
-            <p
-              style={{
-                fontSize: "1.5rem",
-                maxWidth: "48rem",
-                margin: "0 auto",
-                lineHeight: "1.6",
-                fontFamily: "Patrick Hand, cursive",
-                color: "#2d2d2d",
-              }}
-            >
+            <h2 className="mb-5 font-kalam text-4xl font-bold text-foreground">About Us</h2>
+            <p className="mx-auto max-w-3xl font-patrick text-2xl leading-relaxed text-foreground">
               We are passionate game developers with years of experience in the industry. We believe
               games are more than entertainment—they are an art form that can convey emotions and
               values. Our goal is to create games that bring players joy and food for thought.
             </p>
           </motion.div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "3rem",
-            }}
-          >
-            {[
-              {
-                title: "Game Development",
-                description:
-                  "Focused on indie game development using modern game engines and tech stacks",
-                icon: "🎮",
-              },
-              {
-                title: "Creative Design",
-                description:
-                  "Emphasizing creative game design and user experience to create unique gaming experiences",
-                icon: "✨",
-              },
-              {
-                title: "Technical Innovation",
-                description:
-                  "Continuously exploring new technologies and methods to improve game quality and performance",
-                icon: "🚀",
-              },
-            ].map((item, index) => (
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+            {FEATURE_CARDS.map((item, index) => (
               <motion.div
-                key={index}
+                key={item.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="hand-drawn-card jiggle"
-                style={{
-                  backgroundColor: "white",
-                  padding: "2.5rem",
-                  position: "relative",
-                  transform: `rotate(${Math.random() * 2 - 1}deg)`,
-                }}
+                className="hand-drawn-card jiggle relative bg-white p-10"
+                style={{ transform: `rotate(${rotations[index]}deg)` }}
               >
-                <div className="tape"></div>
-                <div style={{ fontSize: "5rem", marginBottom: "1.5rem" }}>{item.icon}</div>
-                <h3
-                  style={{
-                    fontSize: "2rem",
-                    fontWeight: "bold",
-                    fontFamily: "Kalam, cursive",
-                    color: "#2d2d2d",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "1.125rem",
-                    lineHeight: "1.6",
-                    fontFamily: "Patrick Hand, cursive",
-                    color: "#2d2d2d",
-                  }}
-                >
+                <div className="tape" />
+                <div className="mb-6 text-5xl">{item.icon}</div>
+                <h3 className="mb-4 font-kalam text-2xl font-bold text-foreground">{item.title}</h3>
+                <p className="font-patrick text-lg leading-relaxed text-foreground">
                   {item.description}
                 </p>
               </motion.div>

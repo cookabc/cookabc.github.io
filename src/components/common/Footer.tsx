@@ -1,91 +1,54 @@
 import { Link } from "react-router-dom";
 import { FaGithub, FaTwitter, FaDiscord } from "react-icons/fa";
+import { BRAND } from "../../lib/constants";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer
-      style={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
-        borderTopWidth: "2px",
-        borderTopStyle: "solid",
-        borderTopColor: "#2d2d2d",
-        marginTop: "auto",
-      }}
-    >
-      <div
-        style={{ maxWidth: "80rem", margin: "0 auto", paddingLeft: "1rem", paddingRight: "1rem" }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ marginBottom: "1.5rem" }}>
-            <Link
-              to="/"
-              style={{
-                fontSize: "1.875rem",
-                fontWeight: "bold",
-                fontFamily: "Kalam, cursive",
-                color: "#2d2d2d",
-                textDecoration: "none",
-              }}
-            >
-              VeryFun Company
+    <footer className="mt-auto border-t-2 border-border py-12">
+      <div className="mx-auto max-w-[80rem] px-4">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <Link to="/" className="font-kalam text-3xl font-bold text-foreground no-underline">
+              {BRAND.name}
             </Link>
-            <p
-              style={{ marginTop: "0.5rem", color: "#2d2d2d", fontFamily: "Patrick Hand, cursive" }}
-            >
-              Creating a happier world through games
-            </p>
+            <p className="mt-2 font-patrick text-foreground">{BRAND.tagline}</p>
           </div>
-          <div style={{ display: "flex", gap: "1.5rem" }}>
+          <div className="flex items-center gap-6">
             <a
-              href="https://github.com/veryfuncompany"
+              href={BRAND.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "#2d2d2d" }}
-              className="jiggle"
+              className="text-foreground jiggle"
+              aria-label="Visit our GitHub page"
             >
               <FaGithub size={24} />
             </a>
             <a
-              href="https://twitter.com/veryfuncompany"
+              href={BRAND.social.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "#2d2d2d" }}
-              className="jiggle"
+              className="text-foreground jiggle"
+              aria-label="Visit our Twitter page"
             >
               <FaTwitter size={24} />
             </a>
             <a
-              href="https://discord.gg/veryfuncompany"
+              href={BRAND.social.discord}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "#2d2d2d" }}
-              className="jiggle"
+              className="text-foreground jiggle"
+              aria-label="Join our Discord server"
             >
               <FaDiscord size={24} />
             </a>
           </div>
         </div>
-        <div
-          style={{
-            marginTop: "2rem",
-            paddingTop: "2rem",
-            borderTopWidth: "2px",
-            borderTopStyle: "solid",
-            borderTopColor: "#2d2d2d",
-            textAlign: "center",
-            color: "#2d2d2d",
-            fontFamily: "Patrick Hand, cursive",
-          }}
-        >
-          <p>&copy; {new Date().getFullYear()} VeryFun Company. All rights reserved.</p>
+        <div className="mt-8 border-t-2 border-border pt-8 text-center">
+          <p className="font-patrick text-foreground tabular-nums">
+            &copy; {currentYear} {BRAND.name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

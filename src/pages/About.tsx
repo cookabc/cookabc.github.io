@@ -1,141 +1,95 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 
+const TECH_STACK = [
+  { name: "Unity", icon: "🎮", rotation: -0.5 },
+  { name: "Unreal Engine", icon: "⚡", rotation: 0.7 },
+  { name: "C#", icon: "💻", rotation: -0.3 },
+  { name: "C++", icon: "🔧", rotation: 0.9 },
+  { name: "JavaScript", icon: "🌐", rotation: -0.8 },
+  { name: "TypeScript", icon: "✅", rotation: 0.4 },
+  { name: "React", icon: "⚛️", rotation: -0.6 },
+  { name: "Tailwind CSS", icon: "🎨", rotation: 0.2 },
+] as const;
+
+const VALUES = [
+  {
+    title: "Innovation",
+    description:
+      "Continuously exploring new game mechanics and technologies to create unique gaming experiences",
+    rotation: 0.5,
+  },
+  {
+    title: "Quality",
+    description: "Focusing on game quality and details to provide the best experience for players",
+    rotation: -0.7,
+  },
+  {
+    title: "Joy",
+    description:
+      "The core of games is bringing joy to players—this is the principle we always adhere to",
+    rotation: 0.3,
+  },
+] as const;
+
 const About = () => {
+  const techRotations = useMemo(() => TECH_STACK.map((t) => t.rotation), []);
+  const valueRotations = useMemo(() => VALUES.map((v) => v.rotation), []);
+
   return (
     <div>
-      <section style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
-        <div
-          style={{
-            maxWidth: "80rem",
-            margin: "0 auto",
-            paddingLeft: "1rem",
-            paddingRight: "1rem",
-            textAlign: "center",
-          }}
-        >
+      <section className="py-20">
+        <div className="mx-auto max-w-[80rem] px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1
-              style={{
-                fontSize: "3rem",
-                fontWeight: "bold",
-                fontFamily: "Kalam, cursive",
-                color: "#2d2d2d",
-                marginBottom: "1.5rem",
-              }}
-            >
-              About Us
-            </h1>
-            <p
-              style={{
-                fontSize: "1.25rem",
-                color: "#2d2d2d",
-                maxWidth: "48rem",
-                margin: "0 auto",
-                fontFamily: "Patrick Hand, cursive",
-              }}
-            >
+            <h1 className="mb-6 font-kalam text-4xl font-bold text-foreground">About Us</h1>
+            <p className="mx-auto max-w-3xl font-patrick text-xl text-foreground">
               A passionate indie game development studio
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
-        <div
-          style={{ maxWidth: "80rem", margin: "0 auto", paddingLeft: "1rem", paddingRight: "1rem" }}
-        >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "3rem",
-              alignItems: "center",
-            }}
-          >
+      <section className="py-16">
+        <div className="mx-auto max-w-[80rem] px-4">
+          <div className="grid items-center gap-12 md:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="jiggle"
-              style={{ transform: "rotate(-2deg)", position: "relative" }}
+              className="jiggle relative -rotate-2"
             >
               <img
                 src="/images/about.jpeg"
-                alt="Game Developer"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "var(--wobbly-md)",
-                  border: "2px solid #2d2d2d",
-                }}
+                alt="The VeryFun Company team working together on game development"
+                className="h-auto w-full rounded-wobbly-md border-2 border-border outline outline-1 outline-black/10"
               />
-              <div className="tack"></div>
+              <div className="tack" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              style={{
-                backgroundColor: "white",
-                padding: "2rem",
-                position: "relative",
-                transform: "rotate(1deg)",
-                borderRadius: "var(--wobbly-md)",
-                border: "2px solid #2d2d2d",
-              }}
+              className="rotate-1 rounded-wobbly-md border-2 border-border bg-white p-8 relative"
             >
-              <div className="tape"></div>
-              <h2
-                style={{
-                  fontSize: "1.875rem",
-                  fontWeight: "bold",
-                  fontFamily: "Kalam, cursive",
-                  color: "#2d2d2d",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                Our Story
-              </h2>
-              <p
-                style={{
-                  fontSize: "1.125rem",
-                  color: "#2d2d2d",
-                  fontFamily: "Patrick Hand, cursive",
-                  marginBottom: "1rem",
-                  lineHeight: "1.6",
-                }}
-              >
+              <div className="tape" />
+              <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Our Story</h2>
+              <p className="mb-4 font-patrick text-lg leading-relaxed text-foreground">
                 Since childhood, we have been deeply passionate about games—whether playing them or
                 studying the technology behind them. During college, we began learning programming
                 and game development, embarking on our journey in this field.
               </p>
-              <p
-                style={{
-                  fontSize: "1.125rem",
-                  color: "#2d2d2d",
-                  fontFamily: "Patrick Hand, cursive",
-                  marginBottom: "1rem",
-                  lineHeight: "1.6",
-                }}
-              >
+              <p className="mb-4 font-patrick text-lg leading-relaxed text-foreground">
                 After graduation, we worked at a game company for several years, gaining valuable
                 experience. But we always dreamed of creating our own games, so we decided to become
                 an independent game studio.
               </p>
-              <p
-                style={{
-                  fontSize: "1.125rem",
-                  color: "#2d2d2d",
-                  fontFamily: "Patrick Hand, cursive",
-                  lineHeight: "1.6",
-                }}
-              >
+              <p className="font-patrick text-lg leading-relaxed text-foreground">
                 Now, we focus on developing games that bring joy to people, hoping to create a
                 happier world through our games.
               </p>
@@ -144,193 +98,70 @@ const About = () => {
         </div>
       </section>
 
-      <section style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
-        <div
-          style={{ maxWidth: "80rem", margin: "0 auto", paddingLeft: "1rem", paddingRight: "1rem" }}
-        >
+      <section className="py-16">
+        <div className="mx-auto max-w-[80rem] px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            style={{
-              maxWidth: "48rem",
-              marginLeft: "auto",
-              marginRight: "auto",
-              textAlign: "center",
-              marginBottom: "4rem",
-            }}
+            className="mx-auto mb-16 max-w-3xl text-center"
           >
-            <h2
-              style={{
-                fontSize: "1.875rem",
-                fontWeight: "bold",
-                fontFamily: "Kalam, cursive",
-                color: "#2d2d2d",
-                marginBottom: "1rem",
-              }}
-            >
-              Tech Stack
-            </h2>
-            <p
-              style={{
-                fontSize: "1.125rem",
-                color: "#2d2d2d",
-                fontFamily: "Patrick Hand, cursive",
-              }}
-            >
+            <h2 className="mb-2 font-kalam text-2xl font-bold text-foreground">Tech Stack</h2>
+            <p className="font-patrick text-lg text-foreground">
               The main technologies and tools we use
             </p>
           </motion.div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-              gap: "1.5rem",
-            }}
-          >
-            {[
-              { name: "Unity", icon: "🎮" },
-              { name: "Unreal Engine", icon: "⚡" },
-              { name: "C#", icon: "💻" },
-              { name: "C++", icon: "🔧" },
-              { name: "JavaScript", icon: "🌐" },
-              { name: "TypeScript", icon: "✅" },
-              { name: "React", icon: "⚛️" },
-              { name: "Tailwind CSS", icon: "🎨" },
-            ].map((tech, index) => (
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+            {TECH_STACK.map((tech, index) => (
               <motion.div
-                key={index}
+                key={tech.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="hand-drawn-card jiggle"
-                style={{
-                  backgroundColor: "white",
-                  padding: "1.5rem",
-                  textAlign: "center",
-                  position: "relative",
-                  transform: `rotate(${Math.random() * 2 - 1}deg)`,
-                }}
+                className="hand-drawn-card jiggle relative bg-white p-6 text-center"
+                style={{ transform: `rotate(${techRotations[index]}deg)` }}
               >
-                <div className="tack"></div>
-                <div style={{ fontSize: "2.5rem", marginBottom: "0.75rem" }}>{tech.icon}</div>
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    fontFamily: "Patrick Hand, cursive",
-                    color: "#2d2d2d",
-                  }}
-                >
-                  {tech.name}
-                </h3>
+                <div className="tack" />
+                <div className="mb-2 text-4xl">{tech.icon}</div>
+                <h3 className="font-patrick text-base text-foreground">{tech.name}</h3>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
-        <div
-          style={{ maxWidth: "80rem", margin: "0 auto", paddingLeft: "1rem", paddingRight: "1rem" }}
-        >
+      <section className="py-16">
+        <div className="mx-auto max-w-[80rem] px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            style={{
-              maxWidth: "48rem",
-              marginLeft: "auto",
-              marginRight: "auto",
-              textAlign: "center",
-              marginBottom: "4rem",
-            }}
+            className="mx-auto mb-16 max-w-3xl text-center"
           >
-            <h2
-              style={{
-                fontSize: "1.875rem",
-                fontWeight: "bold",
-                fontFamily: "Kalam, cursive",
-                color: "#2d2d2d",
-                marginBottom: "1rem",
-              }}
-            >
-              Our Values
-            </h2>
-            <p
-              style={{
-                fontSize: "1.125rem",
-                color: "#2d2d2d",
-                fontFamily: "Patrick Hand, cursive",
-              }}
-            >
+            <h2 className="mb-2 font-kalam text-2xl font-bold text-foreground">Our Values</h2>
+            <p className="font-patrick text-lg text-foreground">
               Our understanding and beliefs about game development
             </p>
           </motion.div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-              gap: "2rem",
-            }}
-          >
-            {[
-              {
-                title: "Innovation",
-                description:
-                  "Continuously exploring new game mechanics and technologies to create unique gaming experiences",
-              },
-              {
-                title: "Quality",
-                description:
-                  "Focusing on game quality and details to provide the best experience for players",
-              },
-              {
-                title: "Joy",
-                description:
-                  "The core of games is bringing joy to players—this is the principle we always adhere to",
-              },
-            ].map((value, index) => (
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {VALUES.map((value, index) => (
               <motion.div
-                key={index}
+                key={value.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="hand-drawn-card jiggle"
-                style={{
-                  backgroundColor: "white",
-                  padding: "2rem",
-                  position: "relative",
-                  transform: `rotate(${Math.random() * 2 - 1}deg)`,
-                }}
+                className="hand-drawn-card jiggle relative bg-white p-8"
+                style={{ transform: `rotate(${valueRotations[index]}deg)` }}
               >
-                <div className="tape"></div>
-                <h3
-                  style={{
-                    fontSize: "1.25rem",
-                    fontWeight: "bold",
-                    fontFamily: "Kalam, cursive",
-                    color: "#2d2d2d",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  {value.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "1rem",
-                    fontFamily: "Patrick Hand, cursive",
-                    color: "#2d2d2d",
-                    lineHeight: "1.5",
-                  }}
-                >
-                  {value.description}
-                </p>
+                <div className="tape" />
+                <h3 className="mb-4 font-kalam text-xl font-bold text-foreground">{value.title}</h3>
+                <p className="font-patrick leading-normal text-foreground">{value.description}</p>
               </motion.div>
             ))}
           </div>
