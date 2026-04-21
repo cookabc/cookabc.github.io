@@ -5,7 +5,7 @@ export const BRAND = {
     "VeryFun Company is an independent game studio dedicated to crafting games that bring joy to people.",
   social: {
     github: "https://github.com/veryfuncompany",
-    twitter: "https://twitter.com/veryfuncompany",
+    x: "https://x.com/veryfuncompany",
     discord: "https://discord.gg/veryfuncompany",
   },
 } as const;

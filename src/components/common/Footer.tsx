@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { FaGithub, FaTwitter, FaDiscord } from "react-icons/fa";
+import { FaGithub, FaDiscord } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { BRAND } from "../../lib/constants";
 
 const Footer = () => {
@@ -26,13 +27,13 @@ const Footer = () => {
               <FaGithub size={24} />
             </a>
             <a
-              href={BRAND.social.twitter}
+              href={BRAND.social.x}
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground jiggle"
-              aria-label="Visit our Twitter page"
+              aria-label="Visit our X page"
             >
-              <FaTwitter size={24} />
+              <FaXTwitter size={24} />
             </a>
             <a
               href={BRAND.social.discord}

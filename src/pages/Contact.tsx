@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaTwitter, FaDiscord, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaDiscord, FaEnvelope } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const CONTACT_INFO = [
   {
@@ -16,10 +17,10 @@ const CONTACT_INFO = [
     link: "https://github.com/veryfuncompany",
   },
   {
-    icon: <FaTwitter size={24} />,
-    title: "Twitter",
+    icon: <FaXTwitter size={24} />,
+    title: "X",
     value: "@veryfuncompany",
-    link: "https://twitter.com/veryfuncompany",
+    link: "https://x.com/veryfuncompany",
   },
   {
     icon: <FaDiscord size={24} />,
