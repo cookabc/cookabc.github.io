@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && bun run lint && bun run format:check && vite build",
+    "deploy": "bun run build && bunx gh-pages -d dist -b main",
     "lint": "oxlint .",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
