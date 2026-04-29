@@ -40,6 +40,11 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = encodeURIComponent(`Message from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`,
+    );
+    window.location.href = `mailto:hello@veryfuncompany.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
@@ -122,9 +127,9 @@ const Contact = () => {
                   className="py-12 text-center"
                 >
                   <p className="text-4xl mb-4">🎉</p>
-                  <p className="font-kalam text-xl font-bold text-foreground">Message Sent!</p>
+                  <p className="font-kalam text-xl font-bold text-foreground">Email Draft Opened</p>
                   <p className="mt-2 font-patrick text-foreground">
-                    We&apos;ll get back to you soon.
+                    Please send it from your email app so we can reply.
                   </p>
                 </motion.div>
               ) : (
