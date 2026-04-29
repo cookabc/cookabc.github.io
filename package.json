@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && npm run lint && npm run format && vite build",
+    "build": "tsc -b && npm run lint && npm run format:check && vite build",
     "lint": "oxlint .",
     "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
     "preview": "vite preview"
   },
   "dependencies": {
